@@ -1,4 +1,4 @@
-Test project:
+## Test project:
 В этом проекте необходимо реализовать ендпоинт, который будет выводить следующую информацию в соответствии с созданным репозиторием:
 ```
 {
@@ -9,4 +9,18 @@ Test project:
     "started": "2018-04-12T09:33:25Z", // дата и время запуска приложения
     "uptime_seconds": 69470 // количество секунд между текущим временем на момент запроса и started
 }
+```
+
+## Requirements
+python3.6
+
+## Install
+```bash
+python -m pip install -r requirements.txt
+```
+
+
+## Run
+```bash
+python manage.py runserver 8000
 ```
