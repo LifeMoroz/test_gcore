@@ -31,6 +31,6 @@ def get_repo_info(request):
         "commit_date": branch.commit.committed_datetime.astimezone(datetime.timezone.utc),  # дата хед-коммита
         "branch": branch.name,  # текущая ветка
         "version": tag_name,  # максимальный тег хед-коммита
-        "started": settings.INIT_TIME,
+        "started": settings.INIT_TIME.strftime('%Y-%m-%dT%H:%M:%SZ'),
         "uptime_seconds": time.time() - settings.INIT_TIME.timestamp()
     })
