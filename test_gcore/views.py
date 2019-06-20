@@ -7,7 +7,7 @@ from django.http import JsonResponse
 
 
 def get_repo_info(request):
-    repo = git.Repo()
+    repo = git.Repo(settings.BASE_DIR)
     try:
         branch = repo.active_branch
     except ValueError:
@@ -15,8 +15,14 @@ def get_repo_info(request):
             "error": "uninitialized repo"
         })
 
+    def tag_on_commit(tag):
+        try:
+            return tag.commit == branch.commit
+        except ValueError:
+            return False
+
     try:
-        tag_name = repo.tags[-1].tag.tag
+        tag_name = list(filter(tag_on_commit, repo.tags))[-1].name
     except IndexError:
         tag_name = ""
 
